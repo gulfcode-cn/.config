@@ -1,0 +1,10 @@
+tmux
+ripgrep
+neovim
+fzf
+fd
+eza
+fastfetch
+bat
+starship
+zoxide
