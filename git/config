@@ -1,0 +1,11 @@
+[user]
+	name = gulfcode-cn
+	email = 2563348897@qq.com
+[https]
+	proxy = http://127.0.0.1:7890
+[safe]
+	directory = *
+[alias]
+	graph = log --all --graph --decorate --oneline
+[core]
+	excludesfile = /home/crop/.config/git/ignore
