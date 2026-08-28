@@ -21,3 +21,11 @@ then
   export GIT_CONFIG_GLOBAL="$XDG_CONFIG_HOME/git/config"
 fi
 ```
+## 2. if plugins does not work; then
+```bash
+rm -rf ~/.config/zsh/plugins && \
+source ~/.config/zsh/.zshrc
+```
+## 3. install font that suppot icon
+* JetBrainMono
+* Nerd
