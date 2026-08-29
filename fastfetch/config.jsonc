@@ -30,10 +30,11 @@
 
     "modules": [
         {
-            "type": "custom",
-            "key": "\u001b[95mhello, crop!\u001b[0m",
-            "format": "",
-	    "separator": ""
+            "type": "title",
+            "key": " ",
+            "separator": "",
+            "format": "\u001b[95mhello, {user-name}!\u001b[0m",
+            "color": "default"
         },
         "break",
         {
