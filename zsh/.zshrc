@@ -29,7 +29,19 @@ setopt NUMERIC_GLOB_SORT # sort file10 after file9, not after file1
 eval "$(zoxide init zsh)"
 
 # ====================================================
-# Comletion
+# Runtime directories
+# ====================================================
+
+# compinit and HISTFILE only write their files, they never create parent
+# directories, and a missing one fails silently. Create them here so a
+# fresh clone works without manual setup.
+for _zd in "$XDG_CACHE_HOME/zsh" "$XDG_STATE_HOME/zsh"; do
+	[[ -d "$_zd" ]] || mkdir -p "$_zd"
+done
+unset _zd
+
+# ====================================================
+# Completion
 # ====================================================
 
 # Load completion system
@@ -71,24 +83,11 @@ then
 fi
 
 # =====================================================
-# Tmux 
-# =====================================================
-
-if [[ -z $TMUX ]]; then
-    tmux attach -t main || tmux new -s main
-fi
-
-# =====================================================
 # ssh-agent
 # =====================================================
 if [[ -z "$SSH_AUTH_SOCK" ]]; then
 	eval "$(ssh-agent -s)" >/dev/null
 fi
-
-# =====================================================
-# Fastfetch
-# =====================================================
-fastfetch
 
 # =====================================================
 # Modular Config Files
@@ -111,4 +110,17 @@ source "$ZDOTDIR/script.zsh"
 
 # Plugins and plugin manger
 source "$ZDOTDIR/plugins.zsh"
+
+# =====================================================
+# Fastfetch
+# =====================================================
+fastfetch
+
+# =====================================================
+# Tmux
+# =====================================================
+
+if [[ -z $TMUX ]]; then
+    tmux attach -t main || tmux new -s main
+fi
 

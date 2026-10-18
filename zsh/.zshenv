@@ -16,8 +16,12 @@ export VISUAL="nvim"
 export GPG_TTY=$(tty)
 
 # -------------- PATH -----------------------
-# Personal binaries/scripts
-export PATH="$HOME/.local/bin:$PATH"
+# Personal binaries/scripts. Add only if absent: .zshenv runs for every
+# zsh process, and PATH is inherited, so unconditional prepending stacks.
+case ":$PATH:" in
+	(*":$HOME/.local/bin:"*) ;;
+	(*) export PATH="$HOME/.local/bin:$PATH" ;;
+esac
 
 # -------------- Pager ----------------------
 if command -v bat >/dev/null 2>&1; then
