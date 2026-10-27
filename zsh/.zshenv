@@ -15,7 +15,19 @@ export VISUAL="nvim"
 # -------------- GPG ------------------------
 export GPG_TTY=$(tty)
 
+# -------------- Go -------------------------
+export GOPATH="$XDG_DATA_HOME/go"
+
 # -------------- PATH -----------------------
+# Go toolchain and installed Go tools.
+case ":$PATH:" in
+	(*":/usr/local/go/bin:"*) ;;
+	(*) export PATH="/usr/local/go/bin:$PATH" ;;
+esac
+case ":$PATH:" in
+	(*":$GOPATH/bin:"*) ;;
+	(*) export PATH="$GOPATH/bin:$PATH" ;;
+esac
 # Personal binaries/scripts. Add only if absent: .zshenv runs for every
 # zsh process, and PATH is inherited, so unconditional prepending stacks.
 case ":$PATH:" in

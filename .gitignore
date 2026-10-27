@@ -1,3 +1,4 @@
 zsh/plugins/
 zsh/.zcompdump*
 git/local.config
+go/
